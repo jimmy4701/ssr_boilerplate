@@ -8,7 +8,5 @@ export const authenticated = ( component ) => createContainer(({  }) => {
   const authenticated       = !loggingIn && !!Meteor.userId()
   const isAdmin             = Roles.userIsInRole(Meteor.userId(), ["admin"])
 
-  console.log("CLIENT: authenticated", loggingIn, authenticated, isAdmin);
-
   return { loggingIn, authenticated, isAdmin }
 }, component)

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { createContainer } from 'meteor/react-meteor-data'
 import {Grid, Header, Loader} from 'semantic-ui-react'
 
-export default class Landing extends Component{
+export default class Conditions extends Component{
 
   /*
     required props:
@@ -20,7 +20,7 @@ export default class Landing extends Component{
     return(
       <Grid stackable>
         <Grid.Column width={16}>
-          <Header as="h1">MAIN_TITLE</Header>
+          <Header as="h3">Conditions</Header>
         </Grid.Column>
       </Grid>
     )

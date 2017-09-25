@@ -16,15 +16,12 @@ onPageLoad(sink => {
   const isMobile = browser.indexOf("mobile") > -1
 
   const context = {}
+  const sheet = new ServerStyleSheet()
 
   const path = sink.request.url.path
 
-  console.log("SERVER: APPEL DE INDEX");
-  console.log("SERVER: PATH", path);
-
-
-
     let htmlString = renderToString(
+      sheet.collectStyles(
         <Router
           location={ path }
           context={ context }>
@@ -32,8 +29,9 @@ onPageLoad(sink => {
             <Public component={ MainLayoutServer } path="/" isMobile={ isMobile } />
           </Switch>
         </Router>
+      )
     )
-    console.log("SERVER: HTML STRING", htmlString);
 
     sink.renderIntoElementById("root", htmlString)
+    sink.appendToHead(sheet.getStyleTags());
 })

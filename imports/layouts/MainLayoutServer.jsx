@@ -6,9 +6,11 @@ import { Helmet } from "react-helmet"
 
 //components
 import Public from "/imports/components/routes/Public"
+import Navbar from '/imports/components/navigation/Navbar'
 
 //pages
 import Landing from "/imports/pages/Landing"
+import Conditions from "/imports/pages/Conditions"
 import NotFound from "/imports/pages/NotFound"
 
 export default class MainLayoutServer extends Component {
@@ -25,7 +27,6 @@ export default class MainLayoutServer extends Component {
 
   render(){
     const { loading } = this.state
-    console.log("SERVER: APPEL DE MAIN LAYOUT SERVER");
 
     return(
       <div id="main-layout">
@@ -36,8 +37,10 @@ export default class MainLayoutServer extends Component {
         </Helmet>
 
         <main>
+          <Navbar />
           <Switch>
             <Public component={ Landing }  exact path="/"       { ...this.props } />
+            <Public component={ Conditions }  exact path="/conditions" { ...this.props } />
             <Public component={ NotFound } path="*"  { ...this.props } />
           </Switch>
         </main>

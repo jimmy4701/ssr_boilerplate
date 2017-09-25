@@ -11,8 +11,6 @@ import Public               from "/imports/components/routes/Public"
 import MainLayout           from "/imports/layouts/MainLayout"
 import { authenticated }    from "/imports/containers/authenticated"
 
-console.log("CLIENT: APPEL DE ROUTER");
-
 const App = appProps => (
   <Router>
     <Switch>
