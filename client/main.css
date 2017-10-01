@@ -1,1 +1,16 @@
-/* CSS declarations go here */
+/*HELPER CLASSES*/
+.center-align{
+  text-align: center !important;
+}
+
+.left-align{
+  text-align: left !important;
+}
+
+.right-align{
+  text-align: right !important;
+}
+
+.pointer{
+  cursor: pointer !important;
+}

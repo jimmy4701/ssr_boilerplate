@@ -11,9 +11,11 @@ import Navbar from '/imports/components/navigation/Navbar'
 import Public from '/imports/components/routes/Public'
 
 // Pages
-import Landing from '/imports/pages/Landing'
-import Conditions from '/imports/pages/Conditions'
-import NotFound from '/imports/pages/NotFound'
+import Landing from '/imports/pages/general/Landing'
+import Conditions from '/imports/pages/general/Conditions'
+import SignInPage from '/imports/pages/accounts/SignInPage'
+import SignUpPage from '/imports/pages/accounts/SignUpPage'
+import NotFound from '/imports/pages/general/NotFound'
 
 export default class MainLayout extends Component {
   constructor(props){
@@ -39,10 +41,12 @@ export default class MainLayout extends Component {
         </Helmet>
 
         <main>
-          <Navbar/>
+          <Navbar {...this.props}/>
           <Switch>
             <Public component={ Landing }  exact path="/" { ...this.props } />
             <Public component={ Conditions }  exact path="/conditions" { ...this.props } />
+            <Public component={ SignUpPage }  exact path="/sign_up" { ...this.props } />
+            <Public component={ SignInPage }  exact path="/sign_in" { ...this.props } />
             <Public component={ NotFound } path="*"  { ...this.props } />
           </Switch>
         </main>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { createContainer } from 'meteor/react-meteor-data'
 import {Menu, Dropdown, DropdownMenu, DropdownItem} from 'semantic-ui-react'
 
-export default class Navbar extends Component{
+export class Navbar extends Component{
 
   /*
     required props:
@@ -15,6 +15,11 @@ export default class Navbar extends Component{
     }
   }
 
+  logout(e){
+    e.preventDefault()
+    Meteor.logout()
+  }
+
   render(){
     const links = [
       {path: "/", label: "Accueil"}
@@ -24,7 +29,7 @@ export default class Navbar extends Component{
       {path: "/sign_in", label: "Connexion"}
     ]
 
-    const {loggedIn} = this.props
+    const {authenticated} = this.props
     return(
       <Menu borderless={true} size="huge">
         {links.map((link, index) => {
@@ -34,27 +39,19 @@ export default class Navbar extends Component{
             </Link>
           )
         })}
-        {loggedIn ?
-          <Dropdown item className="right">
-            <DropdownMenu>
-              {right_links.map((link, index) => {
-                return (
-                  <Link key={index} to={link.path}>
-                    <DropdownItem>{link.label}</DropdownItem>
-                  </Link>
-                )
-              })}
-            </DropdownMenu>
-          </Dropdown>
+        {authenticated ?
+          <Menu.Menu position='right'>
+            <Menu.Item className="pointer" onClick={(e) => {this.logout(e)}}>Logout</Menu.Item>
+          </Menu.Menu>
         :
           <Menu.Menu position='right'>
-            {right_links.map((link, index) => {
-              return (
-                <Link key={index} to={link.path}>
-                  <Menu.Item>{link.label}</Menu.Item>
-                </Link>
-              )
-            })}
+            <Link to='/sign_up'>
+              <Menu.Item className="pointer">Register</Menu.Item>
+            </Link>
+            <Link to='/sign_in'>
+              <Menu.Item className="pointer">Login</Menu.Item>
+            </Link>
+
           </Menu.Menu>
         }
 
@@ -62,3 +59,7 @@ export default class Navbar extends Component{
     )
   }
 }
+
+export default NavbarContainer = createContainer(({}) => {
+  return {}
+}, Navbar)

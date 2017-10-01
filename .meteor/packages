@@ -30,3 +30,8 @@ timmyg:wow
 react-meteor-data
 server-render
 static-html
+themeteorchef:bert
+aldeed:simple-schema
+aldeed:collection2
+percolate:migrations
+ultimatejs:tracker-react
