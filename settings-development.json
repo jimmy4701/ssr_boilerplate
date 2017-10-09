@@ -1,0 +1,7 @@
+{
+  "private": {
+    "ADMIN_EMAIL": "admin@yopmail.com",
+    "ADMIN_USERNAME": "admin",
+    "ADMIN_PASSWORD": "changeme"
+  }
+} 
